@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
+//import 'package:url_launcher/url_launcher.dart';
 
 
 //TODO: Show loading symbol while fetching posts
@@ -23,33 +24,37 @@ class _LionsJournalPageState extends State<LionsJournalPage> {
         title: new Text('Lion\'s Journal', style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),),
       ),
       body: new ListView.builder(
-        padding:
-        new EdgeInsets.only(bottom: 20.0, top: 0.0, left: 8.0, right: 8.0),
+        padding: new EdgeInsets.only(bottom: 20.0, top: 0.0, left: 8.0, right: 8.0),
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
-          return new Card(
-            child: new Column(
-              children: <Widget>[
-                new Padding(
-                  padding: new EdgeInsets.only(top: 4.0, left: 8.0),
-                  child: new Text(
-                    data[index]['title']['rendered']
-                        .replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''), //Removes weird characters
-                    style: new TextStyle(
+          return new GestureDetector(
+            onTap: () {
+//              _launchUrl(data[index]['link']);
+            },
+            child: new Card(
+              child: new Column(
+                children: <Widget>[
+                  new Padding(
+                    padding: new EdgeInsets.only(top: 4.0, left: 8.0),
+                    child: new Text(
+                      data[index]['title']['rendered']
+                          .replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''), //Removes weird characters
+                      style: new TextStyle(
                         fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                //TODO Insert Date and Author (Add featured Media)
-                new Padding(
-                  padding: new EdgeInsets.all(8.0),
-                  child: new Text(
-                    data[index]['content']['rendered']
-                        .toString()
-                        .replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
+                  //TODO Insert Date and Author (Add featured Media)
+                  new Padding(
+                    padding: new EdgeInsets.all(8.0),
+                    child: new Text(
+                      data[index]['content']['rendered']
+                          .toString()
+                          .replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -66,6 +71,14 @@ class _LionsJournalPageState extends State<LionsJournalPage> {
       data = JSON.decode(responseBody);
     });
   }
+
+//  _launchUrl(String url) async {
+//    if (await canLaunch(url)) {
+//      await launch(url);
+//    } else {
+//      throw 'Could not launch $url';
+//    }
+//  }
 
   void initState() {
     fetch_posts();

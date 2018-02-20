@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
-import 'package:path_provider/path_provider.dart';
+//import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+  HomePage({Key key}) : super(key: key);
 
   static const String routeName = "/HomePage";
-  final String title;
 
   @override
   _HomePageState createState() => new _HomePageState();
@@ -26,22 +25,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   //Methods for checking for the existance of login
-  Future<File> _getAuth() async {
-    // get the path to the document directory.
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    return new File('$dir/auth.txt');
-  }
+//  Future<File> _getAuth() async {
+//    // get the path to the document directory.
+//    String dir = (await getApplicationDocumentsDirectory()).path;
+//    return new File('$dir/auth.txt');
+//  }
 
-  Future<List<String>> _readAuth() async {
-    try {
-      File file = await _getAuth();
-      // read the variable as a string from the file.
-      String contents = await file.readAsString();
-      return contents.split(':');
-    } on FileSystemException {
-      return null;
-    }
-  }
+//  Future<List<String>> _readAuth() async {
+//    try {
+//      File file = await _getAuth();
+//      // read the variable as a string from the file.
+//      String contents = await file.readAsString();
+//      return contents.split(':');
+//    } on FileSystemException {
+//      return null;
+//    }
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +89,7 @@ class _HomePageState extends State<HomePage> {
       getDrawerItem(Icons.home,     'Home',          '/HomePage'),
       getDrawerItem(Icons.book,     'Lions Journal', '/LionsJournalPage'),
       getDrawerItem(Icons.schedule, 'Schedule',      '/SchedulePage'),
+      getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
       drawerAboutItem
     ];
 
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
       drawer: drawer,
       appBar: new AppBar(
-        title: new Text(widget.title, style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),),
+        title: new Text("Home", style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),),
 //        iconTheme: new IconThemeData(color: Colors.yellow),
 //        backgroundColor: new Color(0xFF005A84),
       ),
@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
   }
 //TODO: Fix login screen
   void initState() {
-    if (_readAuth() == null) Navigator.pushNamed(context, "/LoginPage"); //Check if login exists - otherwise open login dialog
+//    if (_readAuth() == null) Navigator.pushNamed(context, "/LoginPage"); //Check if login exists - otherwise open login dialog
     fetch_posts();
   }
 }

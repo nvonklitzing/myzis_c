@@ -15,7 +15,6 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   static const List<ScheduleCard> sampleSchedule = const <ScheduleCard> [
     const ScheduleCard(className: "AP Physics 1", duration: "08:45 - 10:05", room: "215", teacher: "Flynn, Antony"),
-    const ScheduleCard(className: "Break", duration: "10:05 - 10:15"),
     const ScheduleCard(className: "Advisory", duration: "10:15 - 10:45", room: "106", teacher: "Peake, Geoffrey"),
     const ScheduleCard(className: "Coordinated Science 2", duration: "10:50 - 12:10", room: "219", teacher: "Kanoria, Diya"),
     const ScheduleCard(className: "Lunch", duration: "12:10 - 12:55"),
@@ -29,7 +28,7 @@ class _SchedulePageState extends State<SchedulePage> {
       length: days.length,
       child: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Lion\'s Journal', style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow)),
+          title: new Text('Schedule', style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow)),
           bottom: new TabBar(
             isScrollable: true,
             tabs: days.map((String day) {

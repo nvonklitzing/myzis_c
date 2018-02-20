@@ -3,6 +3,7 @@ import 'package:myzis_c/HomePage.dart';
 import 'package:myzis_c/LionsJournalPage.dart';
 import 'package:myzis_c/SchedulePage.dart';
 import 'package:myzis_c/LoginPage.dart';
+import 'package:myzis_c/SettingsPage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -18,14 +19,13 @@ class MyApp extends StatelessWidget {
         primaryColor: new Color(0xFF005A84),
 
       ),
-      home: new HomePage(title: 'Home'),
+      home: new HomePage(),
       routes: <String, WidgetBuilder>{
         HomePage.routeName : (BuildContext context) => new HomePage(),
         LionsJournalPage.routeName : (BuildContext context) => new LionsJournalPage(),
         SchedulePage.routeName : (BuildContext context) => new SchedulePage(),
-        LoginPage.routeName : (BuildContext context) => new LoginPage(),
-//        '/PowerSchoolPage': (BuildContext context) => new PowerSchoolPage(),
-//        '/LoginPage': (BuildContext context) => new LoginPage(),
+        SettingsPage.routeName : (BuildContext context) => new SettingsPage(),
+//        LoginPage.routeName : (BuildContext context) => new LoginPage(),
       },
     );
   }
