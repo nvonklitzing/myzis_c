@@ -13,6 +13,8 @@ class SchedulePage extends StatefulWidget {
 
 //Examle Schedule
 class _SchedulePageState extends State<SchedulePage> {
+  //Powerschool fetching schedule
+
   static const List<ScheduleCard> sampleSchedule = const <ScheduleCard> [
     const ScheduleCard(className: "AP Physics 1", duration: "08:45 - 10:05", room: "215", teacher: "Flynn, Antony"),
     const ScheduleCard(className: "Advisory", duration: "10:15 - 10:45", room: "106", teacher: "Peake, Geoffrey"),
