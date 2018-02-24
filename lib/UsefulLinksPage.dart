@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myzis_c/ScheduleCard.dart';
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UsefulLinksPage extends StatefulWidget {
   UsefulLinksPage({Key key}) : super(key: key);
@@ -14,13 +13,13 @@ class UsefulLinksPage extends StatefulWidget {
 
 //Examle Schedule
 class _SchedulePageState extends State<UsefulLinksPage> {
-//  _launchUrl(String url) async {
-//    if (await canLaunch(url)) {
-//      await launch(url);
-//    } else {
-//      throw 'Could not launch $url';
-//    }
-//  }
+  static _launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   static var serviceLinks = [
     _generateLink("Lunch Orders", Icons.fastfood, "http://passionfood.ch/register/"),
@@ -55,7 +54,7 @@ class _SchedulePageState extends State<UsefulLinksPage> {
   static GestureDetector _generateLink (String name, IconData icon, String url) {
     return new GestureDetector(
       onTap: () {
-//        _launchUrl(url);
+        _launchUrl(url);
       },
       child: new Card(
         child: new Padding(

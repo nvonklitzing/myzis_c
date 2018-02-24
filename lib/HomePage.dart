@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
-//import 'package:path_provider/path_provider.dart';
+import 'package:myzis_c/WordPressPostCard.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -25,22 +26,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   //Methods for checking for the existance of login
-//  Future<File> _getAuth() async {
-//    // get the path to the document directory.
-//    String dir = (await getApplicationDocumentsDirectory()).path;
-//    return new File('$dir/auth.txt');
-//  }
+  Future<File> _getAuth() async {
+    // get the path to the document directory.
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    return new File('$dir/auth.txt');
+  }
 
-//  Future<List<String>> _readAuth() async {
-//    try {
-//      File file = await _getAuth();
-//      // read the variable as a string from the file.
-//      String contents = await file.readAsString();
-//      return contents.split(':');
-//    } on FileSystemException {
-//      return null;
-//    }
-//  }
+  Future<List<String>> _readAuth() async {
+    try {
+      File file = await _getAuth();
+      // read the variable as a string from the file.
+      String contents = await file.readAsString();
+      return contents.split(':');
+    } on FileSystemException {
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,31 +110,10 @@ class _HomePageState extends State<HomePage> {
         new EdgeInsets.only(bottom: 20.0, top: 0.0, left: 8.0, right: 8.0),
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
-          return new Card(
-            child: new Column(
-              children: <Widget>[
-                new Padding(
-                  padding: new EdgeInsets.only(top: 4.0, left: 8.0),
-                  child: new Text(
-                    data[index]['title']['rendered']
-                        .replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''),
-                    style: new TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: new Color(0xFF005A84)),
-                  ),
-                ),
-                //TODO Insert Date and Author (Add featured Media)
-                new Padding(
-                  padding: new EdgeInsets.all(8.0),
-                  child: new Text(
-                    data[index]['content']['rendered']
-                        .toString()
-                        .replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
-                    style: new TextStyle(color: new Color(0xFF005A84)),
-                  ),
-                ),
-              ],
-            ),
+          return new WordPressPostCard(
+            title: data[index]['title']['rendered'].replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''),
+            content: data[index]['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
+            url: data[index]['link'],
           );
         },
       ),
@@ -151,6 +131,7 @@ class _HomePageState extends State<HomePage> {
   }
 //TODO: Fix login screen
   void initState() {
+    Navigator.of(context).pushNamed("/LionsJournalPage");
 //    if (_readAuth() == null) Navigator.pushNamed(context, "/LoginPage"); //Check if login exists - otherwise open login dialog
     fetch_posts();
   }

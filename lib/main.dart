@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         SchedulePage.routeName : (BuildContext context) => new SchedulePage(),
         SettingsPage.routeName : (BuildContext context) => new SettingsPage(),
         UsefulLinksPage.routeName : (BuildContext context) => new UsefulLinksPage(),
-//        LoginPage.routeName : (BuildContext context) => new LoginPage(),
+        LoginPage.routeName : (BuildContext context) => new LoginPage(),
       },
     );
   }
