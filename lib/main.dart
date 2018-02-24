@@ -4,6 +4,7 @@ import 'package:myzis_c/LionsJournalPage.dart';
 import 'package:myzis_c/SchedulePage.dart';
 import 'package:myzis_c/LoginPage.dart';
 import 'package:myzis_c/SettingsPage.dart';
+import 'package:myzis_c/UsefulLinksPage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         LionsJournalPage.routeName : (BuildContext context) => new LionsJournalPage(),
         SchedulePage.routeName : (BuildContext context) => new SchedulePage(),
         SettingsPage.routeName : (BuildContext context) => new SettingsPage(),
+        UsefulLinksPage.routeName : (BuildContext context) => new UsefulLinksPage(),
 //        LoginPage.routeName : (BuildContext context) => new LoginPage(),
       },
     );
