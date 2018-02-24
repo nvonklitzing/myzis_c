@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:myzis_c/WordPressPostCard.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:myzis_c/LoginPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -20,7 +21,6 @@ class _HomePageState extends State<HomePage> {
 
   void _incrementCounter() {
     setState(() {
-
       _counter++;
     });
   }
@@ -45,7 +45,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     //Method for creating drawer Items
     ListTile getDrawerItem(var icon, String s, String routeName) {
       return new ListTile(
@@ -63,16 +62,15 @@ class _HomePageState extends State<HomePage> {
         },
       );
     }
+
     //MyZIS drawer decoration
-    var drawerHeader =  new DrawerHeader(
-        child: new Text('MyZIS',
-          style: new TextStyle(
-            fontSize: 50.0,
-            color: Colors.yellow,
-            fontWeight: FontWeight.bold
-          ),
-        ),
-        decoration: new BoxDecoration(color: new Color(0xFF005A84)),
+    var drawerHeader = new DrawerHeader(
+      child: new Text(
+        'MyZIS',
+        style: new TextStyle(
+            fontSize: 50.0, color: Colors.yellow, fontWeight: FontWeight.bold),
+      ),
+      decoration: new BoxDecoration(color: new Color(0xFF005A84)),
     );
 
     //Drawer About item for info about App
@@ -84,35 +82,41 @@ class _HomePageState extends State<HomePage> {
       icon: new Icon(Icons.info, color: Colors.yellow),
     );
 
-
     var drawerChildren = [
       drawerHeader,
-      getDrawerItem(Icons.home,     'Home',          '/HomePage'),
-      getDrawerItem(Icons.book,     'Lions Journal', '/LionsJournalPage'),
-      getDrawerItem(Icons.schedule, 'Schedule',      '/SchedulePage'),
+      getDrawerItem(Icons.home, 'Home', '/HomePage'),
+      getDrawerItem(Icons.book, 'Lions Journal', '/LionsJournalPage'),
+      getDrawerItem(Icons.schedule, 'Schedule', '/SchedulePage'),
       getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
       getDrawerItem(Icons.help, 'Useful Links', '/UsefulLinksPage'),
       drawerAboutItem
     ];
 
     var drawerView = new ListView(children: drawerChildren);
-    var drawer = new Drawer(child: new Container(child: drawerView, color: new Color(0xFF005A84)));
+    var drawer = new Drawer(
+        child: new Container(child: drawerView, color: new Color(0xFF005A84)));
 
     return new Scaffold(
       drawer: drawer,
       appBar: new AppBar(
-        title: new Text("Home", style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),),
+        title: new Text(
+          "Home",
+          style:
+              new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),
+        ),
 //        iconTheme: new IconThemeData(color: Colors.yellow),
 //        backgroundColor: new Color(0xFF005A84),
       ),
       body: new ListView.builder(
         padding:
-        new EdgeInsets.only(bottom: 20.0, top: 0.0, left: 8.0, right: 8.0),
+            new EdgeInsets.only(bottom: 20.0, top: 0.0, left: 8.0, right: 8.0),
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
           return new WordPressPostCard(
-            title: data[index]['title']['rendered'].replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''),
-            content: data[index]['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
+            title: data[index]['title']['rendered']
+                .replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''),
+            content: data[index]['content']['rendered']
+                .replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
             url: data[index]['link'],
           );
         },
@@ -122,17 +126,20 @@ class _HomePageState extends State<HomePage> {
 
   fetch_posts() async {
     var httpClient = new HttpClient();
-    var request = await httpClient.getUrl(Uri.parse("https://blogs.zis.ch/us/wp-json/wp/v2/posts"));
+    var request = await httpClient
+        .getUrl(Uri.parse("https://blogs.zis.ch/us/wp-json/wp/v2/posts"));
     var response = await request.close();
     var responseBody = await response.transform(UTF8.decoder).join();
     setState(() {
       data = JSON.decode(responseBody);
     });
   }
+
 //TODO: Fix login screen
   void initState() {
-    Navigator.of(context).pushNamed("/LionsJournalPage");
-//    if (_readAuth() == null) Navigator.pushNamed(context, "/LoginPage"); //Check if login exists - otherwise open login dialog
+//    Navigator.of(context).pushNamed("/LionsJournalPage");
+//  if (_readAuth() == null) {
+//  }
     fetch_posts();
   }
 }

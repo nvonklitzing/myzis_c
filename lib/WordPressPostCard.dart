@@ -16,21 +16,14 @@ class WordPressPostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _launchUrl(String url) async {
-      print("launch method called");
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
-
-    return new GestureDetector(
+    return new InkWell(
       onTap: () {
-        if (url != null){
+        Scaffold
+            .of(context)
+            .showSnackBar(new SnackBar(content: new Text("Button Pressed")));
+        if (url != null) {
           _launchUrl(url);
         }
-//        Navigator.of(context).pushNamed(route == null ? "/" : route);
       },
       child: new Card(
         child: new Column(
@@ -55,5 +48,14 @@ class WordPressPostCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _launchUrl(String url) async {
+    print("launch method called");
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

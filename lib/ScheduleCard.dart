@@ -18,7 +18,7 @@ class ScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (className == "Lunch"){
+    if (className == "Lunch") {
       return new Card(
         child: new Column(
           children: <Widget>[
@@ -27,9 +27,7 @@ class ScheduleCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: textSize,
                 )),
-            new Text(
-                duration
-            ),
+            new Text(duration),
           ],
           mainAxisAlignment: MainAxisAlignment.center,
         ),
@@ -43,12 +41,8 @@ class ScheduleCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: textSize,
                 )),
-            new Text(
-                duration
-            ),
-            new Text(
-                room + "   " + teacher
-            ),
+            new Text(duration),
+            new Text(room + "   " + teacher),
           ],
           mainAxisAlignment: MainAxisAlignment.center,
         ),

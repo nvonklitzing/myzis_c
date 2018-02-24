@@ -6,7 +6,6 @@ class UsefulLinksPage extends StatefulWidget {
 
   static const String routeName = "/UsefulLinksPage";
 
-
   @override
   _SchedulePageState createState() => new _SchedulePageState();
 }
@@ -22,27 +21,44 @@ class _SchedulePageState extends State<UsefulLinksPage> {
   }
 
   static var serviceLinks = [
-    _generateLink("Lunch Orders", Icons.fastfood, "http://passionfood.ch/register/"),
-    _generateLink("Bus Information", Icons.directions_bus, "https://www.zis.ch/fs/pages/458"),
-    _generateLink("PE Clothing Information", Icons.pool, "https://www.zis.ch/fs/pages/459"),
-    _generateLink("Health Services", Icons.healing, "https://docs.google.com/document/d/1pwiSWlqAM6ZVaOrkV5yquYK5uHiXNysmxQidm3usOJY/edit?usp=sharing"),
-    _generateLink("Music Academy Teachers", Icons.music_note, "https://docs.google.com/document/d/18RuCv01lZmxp_1l8OwMCIHTqLUsuL7A4Dn4j_J2kenE/edit?ts=5936663b"),
-    _generateLink("Tutor Services (Master List)", Icons.book, "https://docs.google.com/document/d/15dssyjWUq4Z2DafESBK_wqjTujV5dqLSWYIwxQQEuKs/edit"),
+    _generateLink(
+        "Lunch Orders", Icons.fastfood, "http://passionfood.ch/register/"),
+    _generateLink("Bus Information", Icons.directions_bus,
+        "https://www.zis.ch/fs/pages/458"),
+    _generateLink("PE Clothing Information", Icons.pool,
+        "https://www.zis.ch/fs/pages/459"),
+    _generateLink("Health Services", Icons.healing,
+        "https://docs.google.com/document/d/1pwiSWlqAM6ZVaOrkV5yquYK5uHiXNysmxQidm3usOJY/edit?usp=sharing"),
+    _generateLink("Music Academy Teachers", Icons.music_note,
+        "https://docs.google.com/document/d/18RuCv01lZmxp_1l8OwMCIHTqLUsuL7A4Dn4j_J2kenE/edit?ts=5936663b"),
+    _generateLink("Tutor Services (Master List)", Icons.book,
+        "https://docs.google.com/document/d/15dssyjWUq4Z2DafESBK_wqjTujV5dqLSWYIwxQQEuKs/edit"),
   ];
   static var schoolLinks = [
-    _generateLink("Annual Fund", Icons.monetization_on, "https://www.zis.ch/fs/pages/227"),
-    _generateLink("Child Protection Policy", Icons.info, "https://www.zis.ch/uploaded/Faculty_Staff_Portal/Student_Support_Services/ZIS_Child_Protection_Policy.pdf"),
-    _generateLink("Parent & ZIS Partnership", Icons.group_work, "https://www.zis.ch/uploaded/ZIS/Parents_Portal/ZISLinks/ZIS_parent_guardian_partnership_August_15.pdf"),
-    _generateLink("School Publications", Icons.public, "https://www.zis.ch/fs/pages/223"),
-    _generateLink("ZIS Job Center", Icons.work, "https://www.zis.ch/fs/pages/303"),
-    _generateLink("ZIS Terms and Abbreviations", Icons.collections_bookmark, "https://www.zis.ch/fs/pages/303"),
+    _generateLink("Annual Fund", Icons.monetization_on,
+        "https://www.zis.ch/fs/pages/227"),
+    _generateLink("Child Protection Policy", Icons.info,
+        "https://www.zis.ch/uploaded/Faculty_Staff_Portal/Student_Support_Services/ZIS_Child_Protection_Policy.pdf"),
+    _generateLink("Parent & ZIS Partnership", Icons.group_work,
+        "https://www.zis.ch/uploaded/ZIS/Parents_Portal/ZISLinks/ZIS_parent_guardian_partnership_August_15.pdf"),
+    _generateLink(
+        "School Publications", Icons.public, "https://www.zis.ch/fs/pages/223"),
+    _generateLink(
+        "ZIS Job Center", Icons.work, "https://www.zis.ch/fs/pages/303"),
+    _generateLink("ZIS Terms and Abbreviations", Icons.collections_bookmark,
+        "https://www.zis.ch/fs/pages/303"),
   ];
   static var formsLinks = [
-    _generateLink("Mentoring Permission", Icons.info, "https://www.zis.ch/cf_forms/view.cfm?formID=533"),
-    _generateLink("Parent Volunteering", Icons.event_available, "https://www.zis.ch/cf_forms/view.cfm?formID=11715"),
-    _generateLink("Teacher Referral Mentoring", Icons.info, "https://www.zis.ch/cf_forms/view.cfm?formID=532"),
-    _generateLink("Student Withdrawal", Icons.exit_to_app, "https://www.zis.ch/cf_forms/view.cfm?formID=1332"),
-    _generateLink("Temporary Guardianship", Icons.forward, "https://www.zis.ch/uploaded/ZIS/Parents_Portal/ZISLinks/ZIS_temporary_guardianship_form.pdf"),
+    _generateLink("Mentoring Permission", Icons.info,
+        "https://www.zis.ch/cf_forms/view.cfm?formID=533"),
+    _generateLink("Parent Volunteering", Icons.event_available,
+        "https://www.zis.ch/cf_forms/view.cfm?formID=11715"),
+    _generateLink("Teacher Referral Mentoring", Icons.info,
+        "https://www.zis.ch/cf_forms/view.cfm?formID=532"),
+    _generateLink("Student Withdrawal", Icons.exit_to_app,
+        "https://www.zis.ch/cf_forms/view.cfm?formID=1332"),
+    _generateLink("Temporary Guardianship", Icons.forward,
+        "https://www.zis.ch/uploaded/ZIS/Parents_Portal/ZISLinks/ZIS_temporary_guardianship_form.pdf"),
   ];
 
   static var linkLists = [
@@ -51,7 +67,7 @@ class _SchedulePageState extends State<UsefulLinksPage> {
     formsLinks,
   ];
 
-  static GestureDetector _generateLink (String name, IconData icon, String url) {
+  static GestureDetector _generateLink(String name, IconData icon, String url) {
     return new GestureDetector(
       onTap: () {
         _launchUrl(url);
@@ -82,7 +98,9 @@ class _SchedulePageState extends State<UsefulLinksPage> {
       length: linkCategories.length,
       child: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Useful Links', style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow)),
+          title: new Text('Useful Links',
+              style: new TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.yellow)),
           bottom: new TabBar(
             isScrollable: true,
             tabs: linkCategories.map((String category) {
@@ -102,7 +120,6 @@ class _SchedulePageState extends State<UsefulLinksPage> {
         ),
         //TODO: Add body and cards
       ),
-
     );
   }
 
@@ -113,6 +130,5 @@ class _SchedulePageState extends State<UsefulLinksPage> {
     "Forms",
   ];
 
-  void _onFloatingActionButtonPressed() {
-  }
+  void _onFloatingActionButtonPressed() {}
 }

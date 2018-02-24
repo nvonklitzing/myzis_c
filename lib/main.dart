@@ -18,16 +18,17 @@ class MyApp extends StatelessWidget {
         backgroundColor: new Color(0xFF005A84),
         iconTheme: new IconThemeData(color: Colors.yellow),
         primaryColor: new Color(0xFF005A84),
-
       ),
       home: new HomePage(),
       routes: <String, WidgetBuilder>{
-        HomePage.routeName : (BuildContext context) => new HomePage(),
-        LionsJournalPage.routeName : (BuildContext context) => new LionsJournalPage(),
-        SchedulePage.routeName : (BuildContext context) => new SchedulePage(),
-        SettingsPage.routeName : (BuildContext context) => new SettingsPage(),
-        UsefulLinksPage.routeName : (BuildContext context) => new UsefulLinksPage(),
-        LoginPage.routeName : (BuildContext context) => new LoginPage(),
+        HomePage.routeName: (BuildContext context) => new HomePage(),
+        LionsJournalPage.routeName: (BuildContext context) =>
+            new LionsJournalPage(),
+        SchedulePage.routeName: (BuildContext context) => new SchedulePage(),
+        SettingsPage.routeName: (BuildContext context) => new SettingsPage(),
+        UsefulLinksPage.routeName: (BuildContext context) =>
+            new UsefulLinksPage(),
+        LoginPage.routeName: (BuildContext context) => new LoginPage(),
       },
     );
   }

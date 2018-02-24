@@ -14,23 +14,22 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Settings', style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),),
+        title: new Text(
+          'Settings',
+          style:
+              new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),
+        ),
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text(
-            "Notifications of upcoming classes"
-          ),
+          new Text("Notifications of upcoming classes"),
           new Switch(
-              value: false,
-              onChanged: (state) {
-
-              },
+            value: false,
+            onChanged: (state) {},
           ),
         ],
       ),
     );
   }
-
 }
