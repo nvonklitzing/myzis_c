@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:myzis_c/WordPressPostCard.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:myzis_c/LoginPage.dart';
 
 class HomePage extends StatefulWidget {
@@ -126,6 +127,7 @@ class _HomePageState extends State<HomePage> {
 
   fetch_posts() async {
     var httpClient = new HttpClient();
+    httpClient.addCredentials(Uri.parse("https://blogs.zis.ch/us/wp-json/wp/v2/posts"), "Protected", new HttpClientBasicCredentials("", ""));
     var request = await httpClient
         .getUrl(Uri.parse("https://blogs.zis.ch/us/wp-json/wp/v2/posts"));
     var response = await request.close();
@@ -137,9 +139,11 @@ class _HomePageState extends State<HomePage> {
 
 //TODO: Fix login screen
   void initState() {
-//    Navigator.of(context).pushNamed("/LionsJournalPage");
-//  if (_readAuth() == null) {
-//  }
+  if (_readAuth() == null) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context).pushNamed("/LoginPage");
+    });
+  }
     fetch_posts();
   }
 }
