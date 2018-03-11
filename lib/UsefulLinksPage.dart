@@ -67,8 +67,8 @@ class _SchedulePageState extends State<UsefulLinksPage> {
     formsLinks,
   ];
 
-  static GestureDetector _generateLink(String name, IconData icon, String url) {
-    return new GestureDetector(
+  static InkWell _generateLink(String name, IconData icon, String url) {
+    return new InkWell(
       onTap: () {
         _launchUrl(url);
       },

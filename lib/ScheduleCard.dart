@@ -26,7 +26,12 @@ class ScheduleCard extends StatelessWidget {
                 style: new TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: textSize,
-                )),
+                ),
+              textAlign: TextAlign.center,
+              softWrap: true,
+
+
+            ),
             new Text(duration),
           ],
           mainAxisAlignment: MainAxisAlignment.center,

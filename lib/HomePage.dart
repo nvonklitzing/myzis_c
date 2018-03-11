@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
       getDrawerItem(Icons.home, 'Home', '/HomePage'),
       getDrawerItem(Icons.book, 'Lions Journal', '/LionsJournalPage'),
       getDrawerItem(Icons.schedule, 'Schedule', '/SchedulePage'),
-      getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
+//      getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
       getDrawerItem(Icons.help, 'Useful Links', '/UsefulLinksPage'),
       drawerAboutItem
     ];
