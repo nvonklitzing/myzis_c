@@ -78,9 +78,14 @@ class _HomePageState extends State<HomePage> {
     var drawerAboutItem = new AboutListTile(
       child: new Text('About', style: new TextStyle(color: Colors.yellow)),
       applicationName: 'MyZIS',
-      applicationVersion: 'v0.0.1',
+      applicationVersion: 'v0.1',
       applicationIcon: new Icon(Icons.verified_user),
       icon: new Icon(Icons.info, color: Colors.yellow),
+      aboutBoxChildren: <Widget>[
+        new Text("Developed by:"),
+        new Text("Nicholas von Klitzing"),
+        new Text("Kevin Brazile")
+      ],
     );
 
     var drawerChildren = [
@@ -88,8 +93,8 @@ class _HomePageState extends State<HomePage> {
       getDrawerItem(Icons.home, 'Home', '/HomePage'),
       getDrawerItem(Icons.book, 'Lions Journal', '/LionsJournalPage'),
       getDrawerItem(Icons.schedule, 'Schedule', '/SchedulePage'),
-//      getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
       getDrawerItem(Icons.help, 'Useful Links', '/UsefulLinksPage'),
+      getDrawerItem(Icons.settings, 'Settings', '/SettingsPage'),
       drawerAboutItem
     ];
 
@@ -139,11 +144,11 @@ class _HomePageState extends State<HomePage> {
 
 //TODO: Fix login screen
   void initState() {
-  if (_readAuth() == null) {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      Navigator.of(context).pushNamed("/LoginPage");
-    });
-  }
+//  if (_readAuth() == null) {
+//    SchedulerBinding.instance.addPostFrameCallback((_) {
+//      Navigator.of(context).pushNamed("/LoginPage");
+//    });
+//  }
     fetch_posts();
   }
 }

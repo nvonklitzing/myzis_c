@@ -20,13 +20,58 @@ class _SettingsPageState extends State<SettingsPage> {
               new TextStyle(fontWeight: FontWeight.bold, color: Colors.yellow),
         ),
       ),
-      body: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: new GridView.count(
+        padding: const EdgeInsets.all(20.0),
+        crossAxisCount: 2,
+        crossAxisSpacing: 10.0,
         children: <Widget>[
-          new Text("Notifications of upcoming classes"),
-          new Switch(
-            value: false,
-            onChanged: (state) {},
+          new Card(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text("Notifications"),
+                new Switch(
+                  value: false,
+                  onChanged: (state) {},
+                ),
+              ],
+            ),
+          ),
+          new Card(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text("Fetch posts on startup"),
+                new Switch(
+                  value: true,
+                  onChanged: (state) {},
+                ),
+              ],
+            ),
+          ),
+          new Card(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text("Save login"),
+                new Switch(
+                  value: true,
+                  onChanged: (state) {},
+                ),
+              ],
+            ),
+          ),
+          new Card(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text("Aggressive fetching"),
+                new Switch(
+                  value: true,
+                  onChanged: (state) {},
+                ),
+              ],
+            ),
           ),
         ],
       ),
