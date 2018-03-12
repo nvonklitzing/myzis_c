@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:myzis_c/WordPressPostCard.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:myzis_c/TemporaryAnnouncements.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:myzis_c/LoginPage.dart';
 
@@ -17,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List data;
+  List data = TemporaryAnnouncements.data;
   int _counter = 0;
 
   void _incrementCounter() {
@@ -120,9 +121,9 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           return new WordPressPostCard(
             title: data[index]['title']['rendered']
-                .replaceAll(new RegExp(r'<[^>]*>|\[.*\]|\&.*;'), ''),
+                .replaceAll(new RegExp(r'\[.*\]|<[^>]*>|\\u....|&.....;'), ''),
             content: data[index]['content']['rendered']
-                .replaceAll(new RegExp(r'<[^>]*>|\&.*;'), ''),
+                .replaceAll(new RegExp(r'\[.*\]|<[^>]*>|\\u....|&.....;'), ''),
             url: data[index]['link'],
           );
         },
@@ -149,6 +150,6 @@ class _HomePageState extends State<HomePage> {
 //      Navigator.of(context).pushNamed("/LoginPage");
 //    });
 //  }
-    fetch_posts();
+//    fetch_posts();
   }
 }
